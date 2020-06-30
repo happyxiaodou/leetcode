@@ -1,5 +1,8 @@
 package com.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 验证回文字符串
  * 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
@@ -18,8 +21,19 @@ package com.leetcode;
 public class IsPalindrome {
 
     public static boolean isPalindrome(String s) {
-        for (int i = 0; i < s.length(); i++) {
-
+        char[] chars = s.toLowerCase().toCharArray();
+        List<Character> characterList = new ArrayList<>();
+        for (Character c : chars) {
+            if (Character.isLetterOrDigit(c)) {
+                characterList.add(c);
+            }
+        }
+        for (int i = 0; i < characterList.size() / 2; i++) {
+            Character a=characterList.get(i);
+            Character b=characterList.get(characterList.size()-i-1);
+            if(!a.equals(b)){
+                return false;
+            }
         }
         return true;
     }
