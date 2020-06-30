@@ -84,7 +84,7 @@ public class MyAtoi {
         }
         int result = 0;
         for (Character character : characterList) {
-            int pop = Integer.parseInt(character.toString());
+            int pop = character - '0';
             if (result > Integer.MAX_VALUE / 10 ||
                     (result == Integer.MAX_VALUE / 10 && pop > 7)) {
                 return r > 0 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
@@ -95,6 +95,6 @@ public class MyAtoi {
     }
 
     public static void main(String[] args) {
-        System.err.println(myAtoi(""));
+        System.err.println(myAtoi(" -42"));
     }
 }
