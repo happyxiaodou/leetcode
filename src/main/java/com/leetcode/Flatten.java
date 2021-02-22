@@ -24,8 +24,8 @@ package com.leetcode;
 public class Flatten {
     static class TreeNode {
         int val;
-        InvertBinaryTree.TreeNode left;
-        InvertBinaryTree.TreeNode right;
+        TreeNode left;
+        TreeNode right;
 
         TreeNode() {
         }
@@ -34,7 +34,7 @@ public class Flatten {
             this.val = val;
         }
 
-        TreeNode(int val, InvertBinaryTree.TreeNode left, InvertBinaryTree.TreeNode right) {
+        TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
