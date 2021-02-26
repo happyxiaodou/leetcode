@@ -66,6 +66,40 @@ public class Solution {
     }
 
 
+    public ListNode reverseAB(ListNode a, ListNode b) {
+        ListNode pre, cur, nxt;
+        pre = null;
+        cur = a;
+        nxt = a;
+        while (cur != b) {
+            nxt = cur.next;
+            cur.next = pre;
+            // 更新指针位置
+            pre = cur;
+            cur = nxt;
+        }
+        return pre;
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return null;
+        }
+        ListNode start, end;
+        start = end = head;
+        for (int i = 0; i < k; i++) {
+            if (end == null) {
+                return head;
+            }
+            end = end.next;
+        }
+        ListNode newHeader = reverseAB(start, end);
+        start.next = reverseKGroup(end, k);
+
+        return newHeader;
+    }
+
+
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, null)))));
         Solution solution = new Solution();
