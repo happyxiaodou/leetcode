@@ -99,9 +99,43 @@ public class Solution {
         return newHeader;
     }
 
+    ListNode left;
+
+    public boolean isPalindrome(ListNode head) {
+        ListNode fast, slow;
+        fast = slow = head;
+        while (fast != null && fast.next != null) {
+            slow = head.next;
+            fast = head.next.next;
+        }
+        if (fast != null) {
+            slow = slow.next;
+        }
+        ListNode left=head;
+        ListNode right=reverse(slow);
+
+        while (right != null) {
+            if (left.val != right.val)
+                return false;
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+    public boolean traverse(ListNode right) {
+        if (right == null) {
+            return true;
+        }
+        boolean f = traverse(right.next);
+        f = f & (right.val == left.val);
+        left = left.next;
+        return f;
+    }
+
 
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, null)))));
+        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(2, new ListNode(1)))));
         Solution solution = new Solution();
         listNode = solution.reverseN(listNode, 4);
 
