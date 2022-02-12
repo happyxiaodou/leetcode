@@ -144,7 +144,7 @@ public class MealTime {
             if (next == null || next.index == last.index) {
                 continue;
             }
-            Order next = dp(newList, result);//子问题消耗时间
+             next = dp(newList, result);//子问题消耗时间
 
             // 穷举每一个选择
             // 计算每一个子问题的结果
