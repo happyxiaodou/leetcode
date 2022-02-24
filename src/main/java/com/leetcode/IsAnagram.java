@@ -1,5 +1,8 @@
 package com.leetcode;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
  * <p>
@@ -19,6 +22,27 @@ package com.leetcode;
  */
 public class IsAnagram {
 
+    List<List<Integer>> rest=new LinkedList<>();
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        LinkedList<Integer> r=new LinkedList<>();
+        t(graph,0,r);
+        return rest;
+    }
+
+    public  void t(int[][] graph,int s,LinkedList<Integer> r){
+        r.add(s);
+        int n =graph.length;
+        if(s == n-1){
+            // 到达终点
+            rest.add(new LinkedList<>(r));
+            r.removeLast();
+            return;
+        }
+        for(int v: graph[s]){
+            t(graph,v,r);
+        }
+        r.removeLast();
+    }
     public static boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;
