@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import com.leetcode.domain.ListNode;
+
 /**
  * 92. 反转链表 II
  * 反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
@@ -14,22 +16,6 @@ package com.leetcode;
  */
 public class Solution {
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     public ListNode reverse(ListNode head) {
         if (head.next == null) {
@@ -111,8 +97,8 @@ public class Solution {
         if (fast != null) {
             slow = slow.next;
         }
-        ListNode left=head;
-        ListNode right=reverse(slow);
+        ListNode left = head;
+        ListNode right = reverse(slow);
 
         while (right != null) {
             if (left.val != right.val)
@@ -145,7 +131,6 @@ public class Solution {
         }
         System.err.println("");
     }
-
 
 
 }
